@@ -18,14 +18,14 @@
 </head>
 
 
-<body onload="alertbar()">
+<body onload="alertbar()"; bgcolor="#E6E6FA">
     <div>
         <input type="submit" id="startAndStop" class="button" style="display:none" />
     </div>
     <div>
         <div class="row">
             <div class="col-sm col-centered">
-
+                    <p class="err" id="errorMessage"></p>
                 <video id="videoInput" width=320 height=240 style="display:none"></video>
                 <canvas id="canvasOutput" width=320 height=240 style="position: relative; left: 570px;border-radius: 100px"></canvas>
                 <br>

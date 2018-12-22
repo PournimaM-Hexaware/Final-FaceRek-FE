@@ -7,6 +7,8 @@ var app = express();
 var port = process.env.PORT || 8123;
 
 app.use(express.static(__dirname+"/public"));
+app.set('view engine', 'ejs');
+
 
 /**
  * To support JSON-encoded bodies.
@@ -35,13 +37,16 @@ app.post('/upload',(req,res) =>{
      new rekHandler().recognizer(req.body,(err,result)=>{
 
         console.log(err,JSON.stringify(result));
+        console.log(result.results.FaceMatches[0].Face.ExternalImageId)
+        var imageid=result.results.FaceMatches[0].Face.ExternalImageId
+        res.render('welcome',{
+            data:imageid
+   
+        })
 
      }); 
 
-     res.render('welcome.html',{
-         result:result
-
-     })
+   
 
 
 })
