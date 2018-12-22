@@ -53,7 +53,7 @@ function myfunction(){
     </script>
 </head>
 
-<body id="top" data-spy="scroll" data-target=".header" data-offset="80">
+<body id="top" data-spy="scroll" data-target=".header" data-offset="80" onload="play(yodelBuffer);">
     <!-- !!!!!!!!!!!!!! -->
     <!--PRELOADER-->
     <div class="preloader">
@@ -713,7 +713,7 @@ function myfunction(){
     <script type="text/javascript" src="assets/js/init.js"></script>
 
     <!-- SPEECH API  -->
-    <!-- <script type="text/javascript" src="assets/js/speech.js"></script> -->
+    <script type="text/javascript" src="assets/js/speech.js"></script>
     <!-- !!!!!!!!!!!!!! -->
     <script src="https://webrtc.github.io/adapter/adapter-5.0.4.js" type="text/javascript"></script>
     <!-- <script src="utils.js" type="text/javascript"></script> -->
@@ -721,32 +721,32 @@ function myfunction(){
 
     <script type="text/javascript">
         // Loading AudioContext.
-        // const context = new AudioContext();
+        const context = new AudioContext();
 
-        // const URL = 'https://res.cloudinary.com/hexai/video/upload/v1544785921/transcript_7_1.mp3';
-        // // const playButton = document.querySelector('#play');
+        const URL = 'https://res.cloudinary.com/hexai/video/upload/v1544785921/transcript_7_1.mp3';
+        // const playButton = document.querySelector('#play');
 
-        // let yodelBuffer;
+        let yodelBuffer;
 
-        // window.fetch(URL)
-        //     .then(response => response.arrayBuffer())
-        //     .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-        //     .then(audioBuffer => {
-        //         // playButton.disabled = false;
-        //         yodelBuffer = audioBuffer;
-        //         console.log("Audio Loaded =========");
-        //         console.log(yodelBuffer);
-        //     });
-        //     // recognition.start()
-        // play(yodelBuffer);
+        window.fetch(URL)
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
+            .then(audioBuffer => {
+                // playButton.disabled = false;
+                yodelBuffer = audioBuffer;
+                console.log("Audio Loaded =========");
+                console.log(yodelBuffer);
+            });
+            // recognition.start()
+        
 
-        // function play(audioBuffer) {
-        //     console.log(audioBuffer);
-        //     const source = context.createBufferSource();
-        //     source.buffer = audioBuffer;
-        //     source.connect(context.destination);
-        //     source.start();
-        // }
+        function play(audioBuffer) {
+            console.log(audioBuffer);
+            const source = context.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(context.destination);
+            source.start();
+        }
 
     </script>
 </body>

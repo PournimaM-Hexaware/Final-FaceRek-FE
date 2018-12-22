@@ -39,9 +39,44 @@ class recHnadler {
             }
 
         })
+    }
+
+
+    enroll (imagepath, subjectid, callback) {
+        logger.debug("Indexing face of "+subjectid);
+        options = {
+            method: 'POST',
+            url: config.Rekognition.Url+"train",
+            body: {
+                path: imagepath,
+                empId: subjectid,
+                gallery: process.env.gallery
+            },
+            json: true
+        };
+        request(options, function (error, response, body) {
+            if (error || response.status == 500 || response.status == 404) {
+                console.error("Error in calling Rekog Searchface API : " + error)
+                if (error) {
+                    callback(error, null);
+                    // reject(error);
+                } else {
+                    console.error(response.status)
+                    callback(response.status, null);
+                    // reject(response.status)
+                }
+            }
+            else {
+                logger.debug("Rekognition Indexface API Response : " + JSON.stringify(response.body))
+                callback(null, body)
+            }
+
+        })
+    }
+    
 
         // })
-    }
+    
 }
 
 module.exports = recHnadler;
