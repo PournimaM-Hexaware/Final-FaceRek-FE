@@ -53,7 +53,7 @@ function myfunction(){
     </script>
 </head>
 
-<body id="top" data-spy="scroll" data-target=".header" data-offset="80" onload="play(yodelBuffer);">
+<body id="top" data-spy="scroll" data-target=".header" data-offset="80" >
     <!-- !!!!!!!!!!!!!! -->
     <!--PRELOADER-->
     <div class="preloader">
@@ -84,7 +84,7 @@ function myfunction(){
                         <li><a data-scroll href="#sponsers">Sponsors</a></li>
                         <li><a data-scroll href="#contact">Contact</a></li>
                         <li class="hidden"><a href="#sec_1">Home</a></li>
-                        <li style="margin: 25px 10px"><button id="startAndStop" disabled>START</button></li>
+                        <li style="margin: 25px 10px"><button id="startAndStop">START</button></li>
                     </ul>
                 </div>
             </nav>
@@ -738,7 +738,19 @@ function myfunction(){
                 console.log(yodelBuffer);
             });
             // recognition.start()
-        
+
+        //     startAndStop.addEventListener('click', () => {
+        //         console.log("button.start()
+        // });
+        // $('# startAndStop').click() clicked")
+        //         recognition
+        function doFunction(){
+            recognition.start()
+            play(yodelBuffer)
+
+        }
+
+        document.getElementById("startAndStop").onclick = doFunction;
 
         function play(audioBuffer) {
             console.log(audioBuffer);
